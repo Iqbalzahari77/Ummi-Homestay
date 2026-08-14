@@ -827,7 +827,7 @@ footer {
 }
 .site-header .brand-logo {
   width: auto !important;
-  height: 50px !important;
-  max-width: 180px !important;
+  height: 70px !important;
+  max-width: 280px !important;
   object-fit: contain;
 }
