@@ -823,4 +823,11 @@ footer {
   .lightbox-next {
     right: 10px;
   }
+
+}
+.site-header .brand-logo {
+  width: auto !important;
+  height: 50px !important;
+  max-width: 180px !important;
+  object-fit: contain;
 }
