@@ -824,10 +824,160 @@ footer {
     right: 10px;
   }
 
+  /* ===== RULES SLIDER ===== */
+
+.rules-section {
+  background: var(--cream);
 }
-.site-header .brand-logo {
-  width: auto !important;
-  height: 70px !important;
-  max-width: 280px !important;
-  object-fit: contain;
+
+.rules-slider {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.rules-track {
+  position: relative;
+  min-height: 560px;
+}
+
+.rules-slide {
+  display: none;
+  min-height: 520px;
+  padding: 48px;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.rules-slide.active {
+  display: block;
+  animation: ruleFade 0.35s ease;
+}
+
+@keyframes ruleFade {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.rule-number {
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.rule-icon-placeholder {
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  background: #edf4f1;
+  font-size: 42px;
+}
+
+.rules-slide h3 {
+  margin: 0 0 28px;
+  color: var(--green);
+  font-family: "Playfair Display", serif;
+  font-size: 38px;
+  line-height: 1.1;
+}
+
+.rules-slide ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.rules-slide li {
+  margin-bottom: 15px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.rules-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.rules-prev,
+.rules-next {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--green);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.rules-prev:hover,
+.rules-next:hover {
+  background: var(--green);
+  color: #ffffff;
+}
+
+.rules-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.rule-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #c9cfcc;
+  cursor: pointer;
+}
+
+.rule-dot.active {
+  width: 26px;
+  border-radius: 999px;
+  background: var(--green);
+}
+
+
+/* PHONE */
+
+@media (max-width: 640px) {
+
+  .rules-track {
+    min-height: 620px;
+  }
+
+  .rules-slide {
+    min-height: 590px;
+    padding: 30px 24px;
+    border-radius: 22px;
+  }
+
+  .rule-icon-placeholder {
+    width: 72px;
+    height: 72px;
+    font-size: 34px;
+  }
+
+  .rules-slide h3 {
+    font-size: 30px;
+  }
+
+  .rules-slide li {
+    font-size: 15px;
+  }
 }
