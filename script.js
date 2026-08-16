@@ -78,3 +78,95 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") showImage(currentImage + 1);
   if (event.key === "Escape") lightbox.close();
 });
+
+// ===== RULES SLIDER =====
+
+const ruleSlides = [...document.querySelectorAll(".rules-slide")];
+const rulesPrev = document.querySelector(".rules-prev");
+const rulesNext = document.querySelector(".rules-next");
+const rulesDots = document.querySelector(".rules-dots");
+
+let currentRule = 0;
+
+
+// Create dots
+ruleSlides.forEach((slide, index) => {
+
+  const dot = document.createElement("button");
+
+  dot.className = "rule-dot";
+
+  if (index === 0) {
+    dot.classList.add("active");
+  }
+
+  dot.type = "button";
+  dot.setAttribute("aria-label", `Peraturan ${index + 1}`);
+
+  dot.addEventListener("click", () => {
+    showRule(index);
+  });
+
+  rulesDots.appendChild(dot);
+
+});
+
+
+const ruleDots = [...document.querySelectorAll(".rule-dot")];
+
+
+function showRule(index) {
+
+  currentRule = (index + ruleSlides.length) % ruleSlides.length;
+
+  ruleSlides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === currentRule);
+  });
+
+  ruleDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentRule);
+  });
+
+}
+
+
+rulesPrev.addEventListener("click", () => {
+  showRule(currentRule - 1);
+});
+
+
+rulesNext.addEventListener("click", () => {
+  showRule(currentRule + 1);
+});
+
+
+// Swipe pada telefon
+let ruleTouchStart = 0;
+
+document.querySelector(".rules-track").addEventListener(
+  "touchstart",
+  (event) => {
+    ruleTouchStart = event.changedTouches[0].screenX;
+  },
+  { passive: true }
+);
+
+
+document.querySelector(".rules-track").addEventListener(
+  "touchend",
+  (event) => {
+
+    const ruleTouchEnd = event.changedTouches[0].screenX;
+    const difference = ruleTouchStart - ruleTouchEnd;
+
+    if (Math.abs(difference) < 50) return;
+
+    if (difference > 0) {
+      showRule(currentRule + 1);
+    } else {
+      showRule(currentRule - 1);
+    }
+
+  },
+  { passive: true }
+);
